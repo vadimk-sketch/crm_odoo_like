@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(if \\(-not \\(Test-Path \"C:\\\\Users\\\\vadim\\\\Documents\\\\Claude\\\\CRM_odoo_like\\\\backend\\\\config\\\\settings\"\\)\\) { New-Item -ItemType Directory -Force \"C:\\\\Users\\\\vadim\\\\Documents\\\\Claude\\\\CRM_odoo_like\\\\backend\\\\config\\\\settings\" } else { Write-Output \"Directory exists\" })",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\vadim\\\\Documents\\\\Claude\\\\CRM_odoo_like\\\\backend\\\\apps\\\\contacts\\\\migrations\")",
+      "Bash(npx tsc *)",
+      "Bash(cd \"/c/Users/vadim/Documents/Claude/CRM_odoo_like\" && find . -type f | sort)",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

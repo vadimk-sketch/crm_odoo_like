@@ -1,0 +1,19 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "render.yaml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy
+        run: |
+          curl -s -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" | \
+          python3 -c "import sys,json; r=json.load(sys.stdin); print('Deploy triggered:', r.get('deploy', {}).get('id', 'unknown'))"
+        # RENDER_DEPLOY_HOOK_URL is set in GitHub repo secrets
+        # Get it from Render dashboard -> Service -> Settings -> Deploy Hook

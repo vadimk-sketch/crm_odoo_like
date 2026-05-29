@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+*.egg
+.venv/
+venv/
+
+# Django
+*.sqlite3
+/backend/media/
+/backend/staticfiles/
+
+# Node
+node_modules/
+/frontend/dist/
+
+# Environment — keep .env.example and .env.production (no secrets), exclude the rest
+.env
+.env.local
+.env.*.local
+frontend/.env.development.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+postgres_data/
