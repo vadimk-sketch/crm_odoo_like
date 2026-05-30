@@ -13,5 +13,6 @@ COPY --from=builder /usr/local/bin/celery /usr/local/bin/celery
 COPY . .
 RUN chmod +x entrypoint.sh
 ENV DJANGO_SETTINGS_MODULE=config.settings.prod
+ENV PYTHONDONTWRITEBYTECODE=1
 EXPOSE 8000
 CMD ["./entrypoint.sh"]

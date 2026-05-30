@@ -9,7 +9,20 @@
       "Read(//tmp/**)",
       "Bash(xargs -I {} basename {})",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git config *)",
+      "Bash(git commit *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 05f05da0-97d0-4a98-97dd-3d3de12059b8' -H 'Content-Type: application/json' -d '{\"query\": \"{ me { projects { edges { node { id name services { edges { node { id name } } } environments { edges { node { id name } } } } } } } }\"}')",
+      "Bash(python -m json.tool)",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer a123a892-5b55-4a89-bc28-70754d1aa453' -H 'Content-Type: application/json' -d '{\"query\": \"{ me { projects { edges { node { id name services { edges { node { id name } } } environments { edges { node { id name } } } } } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 05f05da0-97d0-4a98-97dd-3d3de12059b8' -H 'Content-Type: application/json' -d '{\"query\": \"{ projects\\(first: 10\\) { edges { node { id name services { edges { node { id name } } } environments { edges { node { id name } } } } } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 05f05da0-97d0-4a98-97dd-3d3de12059b8' -H 'Content-Type: application/json' -d '{\"query\": \"{ me { id email workspaces { id name } } }\"}')",
+      "Bash(curl -s -X POST https://backboard.railway.app/graphql/v2 -H 'Authorization: Bearer 05f05da0-97d0-4a98-97dd-3d3de12059b8' -H 'Content-Type: application/json' -d '{ *)",
+      "Bash(python -c \"import secrets; print\\(secrets.token_urlsafe\\(50\\)\\)\")",
+      "Bash(python -c ' *)"
     ]
   }
 }
