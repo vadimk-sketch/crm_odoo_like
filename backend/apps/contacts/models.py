@@ -98,7 +98,7 @@ class Note(TimestampedModel):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="notes",
+        related_name="company_notes",
     )
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
