@@ -106,13 +106,6 @@ class DealDetailSerializer(serializers.ModelSerializer):
     stage = StageMinimalSerializer(read_only=True)
     stage_id = serializers.UUIDField(write_only=True)
     tags = serializers.SerializerMethodField()
-    tag_ids = serializers.PrimaryKeyRelatedField(
-        many=True,
-        queryset=None,
-        write_only=True,
-        required=False,
-        source="tags",
-    )
     activities = DealActivitySerializer(many=True, read_only=True)
 
     class Meta:
@@ -130,7 +123,13 @@ class DealDetailSerializer(serializers.ModelSerializer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         from apps.contacts.models import Tag
-        self.fields["tag_ids"].child_relation.queryset = Tag.objects.all()
+        self.fields["tag_ids"] = serializers.PrimaryKeyRelatedField(
+            many=True,
+            queryset=Tag.objects.all(),
+            write_only=True,
+            required=False,
+            source="tags",
+        )
 
     def get_tags(self, obj):
         from apps.contacts.serializers import TagSerializer
