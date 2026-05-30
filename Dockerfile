@@ -11,8 +11,7 @@ COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin/gunicorn /usr/local/bin/gunicorn
 COPY --from=builder /usr/local/bin/celery /usr/local/bin/celery
 COPY backend/ .
-RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 ENV DJANGO_SETTINGS_MODULE=config.settings.prod
 ENV PYTHONDONTWRITEBYTECODE=1
 EXPOSE 10000
-CMD ["./entrypoint.sh"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-10000} --workers 4 --worker-class gthread --threads 2 --timeout 120 --access-logfile - --error-logfile -"]
