@@ -6,7 +6,7 @@ import type { Pipeline, Deal } from '@/types/crm';
 
 export async function getPipelines(): Promise<Pipeline[]> {
   const { data } = await client.get('/crm/pipelines/');
-  return data;
+  return Array.isArray(data) ? data : (data.results ?? []);
 }
 
 export async function getPipeline(id: number): Promise<Pipeline> {

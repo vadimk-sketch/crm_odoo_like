@@ -110,13 +110,13 @@ export default function DashboardPage() {
 
     const sorted = [...defaultPipeline.stages].sort((a, b) => a.order - b.order);
     const deals = openDealsData.results.filter(
-      (d) => d.pipeline === defaultPipeline.id && !d.is_lost,
+      (d) => d.pipeline === defaultPipeline.id && !d.closed_at,
     );
 
     return sorted.map((stage) => {
       const stageDeals = deals.filter((d) => d.stage === stage.id);
       const totalValue = stageDeals.reduce(
-        (sum, d) => sum + (parseFloat(d.expected_revenue) || 0),
+        (sum, d) => sum + (parseFloat(d.amount as unknown as string) || 0),
         0,
       );
       return { name: stage.name, value: totalValue, count: stageDeals.length };
@@ -128,7 +128,7 @@ export default function DashboardPage() {
   // Top deals by amount
   const topDeals = openDealsData
     ? [...openDealsData.results]
-        .filter((d) => !d.is_won && !d.is_lost)
+        .filter((d) => !d.closed_at)
         .sort((a, b) => parseFloat(b.expected_revenue) - parseFloat(a.expected_revenue))
         .slice(0, 5)
     : [];
