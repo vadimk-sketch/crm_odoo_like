@@ -11,7 +11,7 @@ COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin/gunicorn /usr/local/bin/gunicorn
 COPY --from=builder /usr/local/bin/celery /usr/local/bin/celery
 COPY backend/ .
-RUN chmod +x entrypoint.sh
+RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 ENV DJANGO_SETTINGS_MODULE=config.settings.prod
 ENV PYTHONDONTWRITEBYTECODE=1
 EXPOSE 10000
