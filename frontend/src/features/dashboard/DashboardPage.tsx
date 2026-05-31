@@ -114,9 +114,13 @@ export default function DashboardPage() {
     );
 
     return sorted.map((stage) => {
-      const stageDeals = deals.filter((d) => d.stage === stage.id);
+      const stageId = typeof stage === 'object' ? stage.id : stage;
+      const stageDeals = deals.filter((d) => {
+        const dealStageId = typeof d.stage === 'object' ? d.stage.id : d.stage;
+        return dealStageId === stageId;
+      });
       const totalValue = stageDeals.reduce(
-        (sum, d) => sum + (parseFloat(d.amount as unknown as string) || 0),
+        (sum, d) => sum + (parseFloat(d.amount) || 0),
         0,
       );
       return { name: stage.name, value: totalValue, count: stageDeals.length };
@@ -129,7 +133,7 @@ export default function DashboardPage() {
   const topDeals = openDealsData
     ? [...openDealsData.results]
         .filter((d) => !d.closed_at)
-        .sort((a, b) => parseFloat(b.expected_revenue) - parseFloat(a.expected_revenue))
+        .sort((a, b) => parseFloat(b.amount) - parseFloat(a.amount))
         .slice(0, 5)
     : [];
 
