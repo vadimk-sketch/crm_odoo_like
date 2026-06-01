@@ -6,7 +6,7 @@ import type { Team, Ticket, TicketMessage } from '@/types/helpdesk';
 
 export async function getTeams(): Promise<Team[]> {
   const { data } = await client.get('/helpdesk/teams/');
-  return data;
+  return Array.isArray(data) ? data : (data.results ?? []);
 }
 
 // Tickets
