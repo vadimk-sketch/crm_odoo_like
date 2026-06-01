@@ -21,4 +21,4 @@ class Command(BaseCommand):
             password=options["password"],
             first_name="Admin",
         )
-        self.stdout.write(f"Created admin: {user.email}")
+        self.stdout.write(self.style.SUCCESS(f"Created: {user.email}"))

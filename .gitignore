@@ -34,3 +34,7 @@ Thumbs.db
 
 # Docker
 postgres_data/
+
+# Local test venv & db
+backend/.venv_test/
+backend/test_check.db
