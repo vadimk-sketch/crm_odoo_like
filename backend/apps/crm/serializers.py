@@ -115,7 +115,7 @@ class DealDetailSerializer(serializers.ModelSerializer):
             "contact", "contact_id", "company", "company_id",
             "owner", "owner_id", "amount", "currency",
             "probability", "expected_close_date", "closed_at",
-            "priority", "description", "tags", "tag_ids",
+            "priority", "description", "tags",
             "activities", "created_at", "updated_at",
         ]
         read_only_fields = ["id", "closed_at", "created_at", "updated_at"]
